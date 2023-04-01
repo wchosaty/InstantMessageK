@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/roomListFragment">
+
+    <fragment
+        android:id="@+id/roomListFragment"
+        android:name="com.net.instantmessagek.fragment.RoomListFragment"
+        android:label="fragment_room_list"
+        tools:layout="@layout/fragment_room_list" >
+        <action
+            android:id="@+id/action_roomListFragment_to_friendListFragment"
+            app:destination="@id/friendListFragment" />
+        <action
+            android:id="@+id/action_roomListFragment_to_messageActivity"
+            app:destination="@id/messageActivity" />
+        <action
+            android:id="@+id/action_roomListFragment_to_createRoomFragment"
+            app:destination="@id/createRoomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendListFragment"
+        android:name="com.net.instantmessagek.fragment.FriendListFragment"
+        android:label="fragment_friend_list"
+        tools:layout="@layout/fragment_friend_list" >
+        <action
+            android:id="@+id/action_friendListFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/messageActivity"
+        android:name="com.net.instantmessagek.MessageActivity"
+        android:label="activity_message"
+        tools:layout="@layout/activity_message" />
+    <fragment
+        android:id="@+id/createRoomFragment"
+        android:name="com.net.instantmessagek.fragment.CreateRoomFragment"
+        android:label="fragment_create_room"
+        tools:layout="@layout/fragment_create_room" >
+        <action
+            android:id="@+id/action_createRoomFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+    </fragment>
+</navigation>

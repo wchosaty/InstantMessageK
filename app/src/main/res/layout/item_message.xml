@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="messViewModel"
+            type="com.net.instantmessagek.viewmodel.MessageViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Layout_User"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/tvMessage_User"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_margin="3dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="20sp"
+                android:layout_marginLeft="200dp"
+                tools:text="ABCabc1234567890123456789012345678901234567890"
+                android:background="@drawable/message_blue_cut"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/ivImage_User"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintHorizontal_bias="0.99"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMessage_User"
+                tools:srcCompat="@tools:sample/avatars" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/Layout_Other"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUserName_Other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:padding="1dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/tvMessage_Other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/black"
+                android:background="@drawable/message_grey_cut"
+                tools:text="ABCabc123456789012345678901234567890"
+                android:gravity="center_vertical"
+                android:padding="20sp"
+                android:layout_marginRight="50dp"
+                />
+            <ImageView
+                android:id="@+id/ivImage_Other"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                tools:srcCompat="@tools:sample/avatars" />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

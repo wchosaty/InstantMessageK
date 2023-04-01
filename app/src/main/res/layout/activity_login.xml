@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LoginActivity">
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.net.instantmessagek.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tvUserName"
+            style="@style/myText"
+            android:text="UserName:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.02"
+            app:layout_constraintVertical_bias="0.2"
+            />
+
+        <TextView
+            android:id="@+id/tvPassWord"
+            style="@style/myText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PassWord:"
+            app:layout_constraintVertical_bias="0.05"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvUserName"
+            app:layout_constraintStart_toStartOf="@+id/tvUserName"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
+        <EditText
+            android:id="@+id/etUserName"
+            style="@style/myText"
+            android:ems="10"
+            android:hint="Key in UserName"
+            android:inputType="textPersonName"
+            android:text="@={loginViewModel.userName}"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintBottom_toBottomOf="@+id/tvUserName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvUserName"
+            app:layout_constraintTop_toTopOf="@+id/tvUserName" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            style="@style/myText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Key in PassWord"
+            android:inputType="textPassword"
+            android:text="@={loginViewModel.passWord}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPassWord"
+            app:layout_constraintEnd_toEndOf="@+id/etUserName"
+            app:layout_constraintStart_toStartOf="@+id/etUserName"
+            app:layout_constraintTop_toTopOf="@+id/tvPassWord" />
+
+        <TextView
+            android:id="@+id/tvCity_Login"
+            style="@style/myText"
+            android:text="City :"
+            app:layout_constraintVertical_bias="0.05"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvPassWord"
+            app:layout_constraintStart_toStartOf="@+id/tvPassWord"
+            app:layout_constraintTop_toBottomOf="@+id/tvPassWord" />
+
+        <Button
+            android:id="@+id/btLoginIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登入"
+
+            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNickname_Login"
+            />
+
+        <EditText
+            android:id="@+id/etCity_Login"
+            style="@style/myText"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@={loginViewModel.city}"
+            android:hint="Key in City"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCity_Login"
+            app:layout_constraintEnd_toEndOf="@+id/etPassword"
+            app:layout_constraintStart_toEndOf="@+id/tvPassWord"
+            app:layout_constraintTop_toTopOf="@+id/tvCity_Login" />
+
+        <TextView
+            android:id="@+id/tvNickname_Login"
+            style="@style/myText"
+            android:text="Nickname"
+            app:layout_constraintVertical_bias="0.05"
+            app:layout_constraintTop_toBottomOf="@+id/tvCity_Login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvCity_Login"
+            app:layout_constraintEnd_toEndOf="@+id/tvCity_Login"
+            />
+
+        <EditText
+            android:id="@+id/etNickname_Login"
+            style="@style/myText"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@={loginViewModel.nickName}"
+            android:hint="Key in Nickname"
+            app:layout_constraintStart_toStartOf="@+id/etCity_Login"
+            app:layout_constraintEnd_toEndOf="@id/etCity_Login"
+            app:layout_constraintTop_toTopOf="@+id/tvNickname_Login"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNickname_Login"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
