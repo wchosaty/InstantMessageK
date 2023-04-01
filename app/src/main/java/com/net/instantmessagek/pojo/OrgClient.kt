@@ -7,7 +7,7 @@ import com.net.instantmessagek.MessageAdapter
 import com.net.instantmessagek.common.Com
 import com.net.instantmessagek.common.LogDmy
 import com.net.instantmessagek.databinding.ActivityMessageBinding
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.java_websocket.client.WebSocketClient
 import org.java_websocket.handshake.ServerHandshake
 import java.lang.Exception
@@ -29,7 +29,7 @@ class OrgClient(uri: URI?,val activity: Activity,val binding: ActivityMessageBin
 
             if(j.get(Com.ACTION).asString == Com.MESSAGE ) {
                 var m = Gson().fromJson(j.get(Com.MESSAGE).asString, MessageHistory::class.java)
-                activity.runOnUiThread {
+                CoroutineScope(Dispatchers.Main).launch {
                     with(binding){
                         var a: MessageAdapter = binding.recyclerAC.adapter as MessageAdapter
                         if(a != null){
@@ -46,8 +46,7 @@ class OrgClient(uri: URI?,val activity: Activity,val binding: ActivityMessageBin
 
     override fun onMessage(bytes: ByteBuffer?) {
         var image : ByteArray? = bytes?.array()
-        runBlocking {
-            activity.runOnUiThread {
+            CoroutineScope(Dispatchers.Main).launch {
                 // 測試 Kotlin WebSocket傳圖
 //                binding.ivTest.setImageBitmap(BitmapFactory.decodeByteArray(image,0, image?.size ?: 0))
                 var m = MessageHistory(0L,0L,"","")
@@ -61,7 +60,6 @@ class OrgClient(uri: URI?,val activity: Activity,val binding: ActivityMessageBin
                     }
                 }
             }
-        }
     }
 
     override fun onClosing(code: Int, reason: String?, remote: Boolean) {

@@ -27,9 +27,7 @@ import com.net.instantmessagek.databinding.ActivityMessageBinding
 import com.net.instantmessagek.pojo.MessageHistory
 import com.net.instantmessagek.pojo.OrgClient
 import com.net.instantmessagek.viewmodel.MessageViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import java.io.BufferedInputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -78,23 +76,21 @@ class MessageActivity : AppCompatActivity() {
         getLocalData(thisRoomName)
         showMessageList()
         handleButton()
-
-        Thread() {
-            runBlocking { launch {
-                runOnUiThread {
+        runBlocking { launch {
+                withContext(Dispatchers.IO) {
                     getNetData(lastMessID)
-                    var ma = adapter as MessageAdapter
-                    if(ma != null){
-                        ma.setList(messageList)
-                        if(ma.itemCount > 0){
-                            binding.recyclerAC.scrollToPosition(ma.itemCount-1)
+                    CoroutineScope(Dispatchers.Main).launch {
+                        var ma = adapter as MessageAdapter
+                        if (ma != null) {
+                            ma.setList(messageList)
+                            if (ma.itemCount > 0) {
+                                binding.recyclerAC.scrollToPosition(ma.itemCount - 1)
+                            }
                         }
                     }
-
                 }
                 startConnect()
             } }
-        }.start()
     }
 
     private fun handleButton() {

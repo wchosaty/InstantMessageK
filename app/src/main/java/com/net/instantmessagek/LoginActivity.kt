@@ -4,11 +4,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.viewModelScope
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.google.gson.Gson
@@ -20,9 +18,6 @@ import com.net.instantmessagek.connection.Connection
 import com.net.instantmessagek.databinding.ActivityLoginBinding
 import com.net.instantmessagek.pojo.User
 import com.net.instantmessagek.viewmodel.LoginViewModel
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class LoginActivity : AppCompatActivity() {
