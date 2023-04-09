@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
@@ -55,6 +56,7 @@ class MessageActivity : AppCompatActivity() {
     private lateinit var image: ByteArray
     private var newSize: Int = 0
     private val url: String = "ws://10.0.2.2:8899"
+    private val viewPool by lazy { RecyclerView.RecycledViewPool() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,6 +85,10 @@ class MessageActivity : AppCompatActivity() {
                         var ma = adapter as MessageAdapter
                         if (ma != null) {
                             ma.setList(messageList)
+                            // 調校
+                            binding.recyclerAC.setHasFixedSize(true)
+                            binding.recyclerAC.setItemViewCacheSize(messageList.size * 5 + 1)
+                            binding.recyclerAC.setRecycledViewPool(viewPool)
                             if (ma.itemCount > 0) {
                                 binding.recyclerAC.scrollToPosition(ma.itemCount - 1)
                             }
